@@ -60,6 +60,9 @@
 		  <li class="<%= @cname == 'users' ? 'active' : '' %>">
 				<%= link_to_section "Users &amp; Customers", :controller=>"/admin/users" rescue nil %>
 			</li>
+			<li class="<%= @cname == 'languages' ? 'active' : '' %>">
+				<%= link_to_section "Languages", :controller => '/admin/languages' %>
+			</li>
 		</ul>
 	</div>
 

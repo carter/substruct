@@ -1,0 +1,46 @@
+<div id="left">
+  <h1>Languages</h1>
+
+  <%= will_paginate @languages %>
+	<br/>
+
+  <% if @languages.any? %>
+		<ul>
+		<% @languages.each do |language| %>
+    	<li id="language_<%= language.id %>">
+				<div style="float:right;">
+					<!-- rename stuff -->
+					<span style="margin-right:10px;">
+						<span id="language_edit_<%= language.id %>">
+								<%= link_to image_tag('icons/png-24/16-em-pencil.png', :plugin => 'substruct', :alt => 'Edit'), :action => 'edit', :id => language.id %>
+						</span>
+					</span>
+
+					<!-- delete -->
+					<%= link_to_remote image_tag("icons/png-24/16-em-cross.png", :id => "trash_#{language.id}", :plugin => 'substruct', :alt => 'Delete'),
+					    :url => {
+					        :controller => "admin/languages",
+					        :action => "destroy", 
+					        :id => language.id, :method => :delete}
+					%>
+					<!-- delete indicator -->
+					<%= image_tag 'indicator.gif', :id => "spin_#{language.id}", :style => "display:none;", :plugin => 'substruct' %>
+				</div>
+				<%= link_to "#{language.name} (#{language.iso_abbreviation})", :action => 'edit', :id => language %>
+			</li>
+    <% end %>
+		</ul>
+  <% else %>
+    No languages to show in this view.
+  <% end %>
+
+	<br/>
+  <%= will_paginate @languages %>
+
+</div>
+
+<div id="right">
+		<%= link_to 'Add a language', {:action => 'new'}, :class => 'button hundredfifty' %>
+</div>
+
+<div class="clear">&nbsp;</div>
