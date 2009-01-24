@@ -21,6 +21,7 @@ class Admin::LanguagesController < Admin::BaseController
   def update
     if @language.update_attributes(params[:language])
       flash[:notice] = 'Your language was successfully updated'
+      redirect_to :action => :index
     else
       render :action => :edit
     end
