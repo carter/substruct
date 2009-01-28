@@ -14,8 +14,6 @@ class AddLanguageRights < ActiveRecord::Migration
   end
 
   def self.down
-  
-
 		puts 'Removing promotion rights'
 		rights = Right.find(:all, :conditions => "name LIKE 'Language%'")
 		for right in rights

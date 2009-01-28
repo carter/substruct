@@ -178,10 +178,10 @@ function highlightItem(item_id) {
 	new Effect.Highlight($(item_id));
 }
 
-window.observe('load' function() {
-	if ($('language_selector')) {
-		$('language_selector').observe('change', function() {
-			alert($('language_selector').value)
+addEvent(window, 'load', function() {
+	if ($('language_select')) {
+		$('language_select').observe('change', function() {
+			alert($('language_select').value);
 		})
 	}
-})
+});
