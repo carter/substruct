@@ -43,6 +43,10 @@
 			</div>
 		<% end %>
 		
+		<%- if Language.count > 1 -%>
+			<%= select_tag(:language_select, options_for_select(Language.find(:all).collect {|l| [l.name, l.iso_abbreviation]}, I18n.locale.to_s)) %>
+		<%- end -%>
+		
 		<!-- search box -->
 		<div id="searchbox">
 			<form action="/store/search" method="post">

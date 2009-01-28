@@ -2,6 +2,8 @@
 #
 #
 class Item < ActiveRecord::Base
+  translations_for :name, :description
+  
   has_many :order_line_items
   has_many :wishlist_items, :dependent => :destroy
   validates_presence_of :name, :code

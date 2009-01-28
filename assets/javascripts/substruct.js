@@ -177,3 +177,11 @@ function showSubTab(pane_id, tab_link) {
 function highlightItem(item_id) {
 	new Effect.Highlight($(item_id));
 }
+
+window.observe('load' function() {
+	if ($('language_selector')) {
+		$('language_selector').observe('change', function() {
+			alert($('language_selector').value)
+		})
+	}
+})
