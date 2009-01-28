@@ -43,7 +43,7 @@
 			</div>
 		<% end %>
 		
-		<%- if Language.count > 1 -%>
+		<%- if Preference.find_by_name('internationalization').is_true? -%>
 			<%= select_tag(:language_select, options_for_select(Language.find(:all).collect {|l| [l.name, l.iso_abbreviation]}, I18n.locale.to_s)) %>
 		<%- end -%>
 		

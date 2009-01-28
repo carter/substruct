@@ -2,6 +2,21 @@ module SubstructApplicationController
   include Substruct
   include LoginSystem
   require 'substruct_deprecated'
+  
+  def get_lang
+    if Preference.find_by_name('internationalization').is_true?
+      if params[:locale].blank?  
+        redirect_to "/#{session[:locale] || I18n.locale.to_s}"
+      else
+        unless @lang = Language.find_by_iso_abbreviation(params[:locale])
+          redirect_to "/#{session[:locale] || I18n.locale.to_s}#{request.request_uri}"
+        else
+          I18n.locale = params[:locale].to_sym
+          session[:locale] ||= params[:locale]
+        end
+      end
+    end
+  end
 
   def self.included(base)
     base.class_eval do

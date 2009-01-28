@@ -40,6 +40,14 @@
 				</p>
 				<p>
 					<label>
+						<%= check_box_tag('prefs[internationalization]', 1, (@prefs['internationalization'].is_true?)) %>
+						Internationalization?
+					</label>
+					<input name="prefs[internationalization]" type="hidden" value="0" />
+					<span class="info">If you change this value you will need to restart your Rails instance to reload the routes.</span>
+				</p>
+				<p>
+					<label>
 						<%= check_box_tag('prefs[store_use_inventory_control]', 1, (@prefs['store_use_inventory_control'].is_true?)) %>
 						Use inventory control?
 					</label>
