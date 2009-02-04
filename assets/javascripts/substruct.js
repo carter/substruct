@@ -178,15 +178,29 @@ function highlightItem(item_id) {
 	new Effect.Highlight($(item_id));
 }
 
+// language select box
 addEvent(window, 'load', function() {
 	if ($('language_select')) {
 		$('language_select').observe('change', function() {
 			match = /(.{4,5})\:\/\/(.*)\/(.{2})\/(.*)$/g.exec(location); // get the part of the url after the lang
-			if (match != null)
-			{
-				location = '/' + $('language_select').value + '/' + match[4]
+			
+			// if we're in the admin and the page has a form then ask before we switch languages
+			if (((match == null) || !(/admin/.exec(match[4]))) || !document.forms || confirm('Are you sure you want to change the language? You may lose your work if you havent saved.')) {
+				if (match != null)
+				{
+					location = '/' + $('language_select').value + '/' + match[4]
+				} else {
+					location = '/' + $('language_select').value
+				}
 			} else {
-				location = '/' + $('language_select').value
+				// if we say no then reset the select to its default
+				for (var i=0; i<$('language_select').length; i++)
+				{
+					if ($('language_select').options[i].defaultSelected == true) {
+						alert(i);
+						$('language_select').options[i].selected = true;
+					}
+				}
 			}
 		})
 	}
