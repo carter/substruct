@@ -73,8 +73,11 @@
 			  <br/>
 			  <span class="user_id"><%=h User.find(session[:user]).login %> - <%=h request.env["SERVER_NAME"] %></span>
 			</div>
+			<%- if Preference.find_by_name('internationalization').is_true? -%>
+				<%= select_tag(:language_select, options_for_select(Language.find(:all).collect {|l| [l.name, l.iso_abbreviation]}, I18n.locale.to_s)) %>
+			<%- end -%>
 			<a href="/">Public site</a> -
-			<a href="/admin/preferences/">Preferences</a> - 
+			<%= link_to "Preferences", :controller => 'admin/preferences' %> - 
 			<a href="http://code.google.com/p/substruct/wiki/HelpUsage" class="submodal-800-600">Online Help</a> -
 			<a href="http://dev.subimage.com/projects/substruct/">About Substruct</a>
 		</div>

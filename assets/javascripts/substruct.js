@@ -181,8 +181,13 @@ function highlightItem(item_id) {
 addEvent(window, 'load', function() {
 	if ($('language_select')) {
 		$('language_select').observe('change', function() {
-			match = /http/g.exec(location)
-			alert(match[0]);
+			match = /(.{4,5})\:\/\/(.*)\/(.{2})\/(.*)$/g.exec(location); // get the part of the url after the lang
+			if (match != null)
+			{
+				location = '/' + $('language_select').value + '/' + match[4]
+			} else {
+				location = '/' + $('language_select').value
+			}
 		})
 	}
 });
