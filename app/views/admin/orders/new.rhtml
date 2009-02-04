@@ -2,7 +2,7 @@
   <h1>New order</h1>
 
   <ul class="navigation secondary">
-    <li><a href="/admin/orders/list/">Back to Order List</a></li>
+		<li><%= link_to 'Back to Order List', :controller => "admin/orders", :action => "list" %></li>
   </ul>
 
   <%= form_tag :action => 'create' %>

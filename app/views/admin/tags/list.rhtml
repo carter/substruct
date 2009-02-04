@@ -48,7 +48,7 @@
 			} else {
 				// Create worked, make new table row and fill it in
 				new Insertion.Bottom($("tag_list"), content);
-				Sortable.create("tag_list", {onUpdate:function(){new Ajax.Request('/admin/tags/update_tag_rank', {asynchronous:true, evalScripts:true, parameters:Sortable.serialize("tag_list")})}});
+				Sortable.create("tag_list", {onUpdate:function(){new Ajax.Request('<%= url_for :controller => 'admin/tags', :action => 'update_tag_rank' %>', {asynchronous:true, evalScripts:true, parameters:Sortable.serialize("tag_list")})}});
 			}
 			// Reload form
 			$("tag_name").value = "";
@@ -72,7 +72,7 @@
 			Element.hide("tag_rename_controls_"+tag_id);
 			Element.show("spin_edit_"+tag_id);
 			// Make AJAX request to rename tag
-			new Ajax.Request('/admin/tags/update', 
+			new Ajax.Request('<%= url_for :controller => 'admin/tags', :action => 'update' %>', 
 					{ parameters:'id='+tag_id+'&name='+$F("tag_input_"+tag_id), 
 						evalScripts:true,
 					  onFailure:editFailure }
@@ -98,7 +98,7 @@
 	<h1><%= @title %></h1>
 	
 	<ul class="navigation secondary">
-		<li><a href="/admin/products/list">Back to Products</a></li>
+		<li><%= link_to "Back to Products", :controller => 'admin/products', :action => 'list' %></li>
 	</ul>
 
 	<!-- AJAX CREATE TAG FORM -->
@@ -134,7 +134,7 @@
 		<% if !@parent_tag %>
 			Top Level Tags
 		<% else %>
-			<a href="/admin/tags/list">Top Level Tags</a> &gt; 
+			<%= link_to 'Top Level Tags', :controller => 'admin/tags', :action => 'list' %> &gt; 
 			<% if @parent_tag.parent %>
 				<%= link_to(@parent_tag.parent.name, :action => 'list', :id => @parent_tag.parent.name ) %> &gt;
 			<% end %>

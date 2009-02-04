@@ -4,7 +4,7 @@
   <% if @search_term || @list_options %>
   <!-- Navigation back to all products list -->
   <p>
-    <a href="/admin/products/list/">Show all Products...</a>
+		<%= link_to 'Show all Products...', :controller => 'admin/products', :action => 'list' %>
   </p>
   <% end %>
 

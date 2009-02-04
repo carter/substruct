@@ -48,7 +48,7 @@
 			} else {
 				// Create worked, make new table row and fill it in
 				new Insertion.Bottom($("section_list"), content);
-				Sortable.create("section_list", {onUpdate:function(){new Ajax.Request('/admin/sections/update_rank', {asynchronous:true, evalScripts:true, parameters:Sortable.serialize("section_list")})}});
+				Sortable.create("section_list", {onUpdate:function(){new Ajax.Request('<%= url_for :controller => 'admin/sections', :action => 'update_rank' %>', {asynchronous:true, evalScripts:true, parameters:Sortable.serialize("section_list")})}});
 			}
 			// Reload form
 			$("section_name").value = "";
@@ -72,7 +72,7 @@
 			Element.hide("section_rename_controls_"+section_id);
 			Element.show("spin_edit_"+section_id);
 			// Make AJAX request to rename section
-			new Ajax.Request('/admin/sections/update', 
+			new Ajax.Request('<%= url_for :controller => 'admin/sections', :action => 'update' %>', 
 					{ parameters:'id='+section_id+'&name='+$F("section_input_"+section_id), 
 						evalScripts:true,
 					  onFailure:editFailure }
@@ -98,7 +98,7 @@
 	<h1><%= @title %></h1>
 	
 	<ul class="navigation secondary">
-		<li><a href="/admin/content_nodes/list">Back to Content Nodes</a></li>
+		<li><%= link_to 'Back to Content Nodes', :controller => 'admin/content_nodes', :action => 'list' %></li>
 	</ul>
 
 	<!-- AJAX CREATE TAG FORM -->

@@ -7,7 +7,7 @@
 
   <h1>Editing Role</h1>
   <ul class="navigation secondary">
-    <li><a href="/admin/roles/list/">Back to Role List</a></li>
+		<li><%= link_to "Back to Role List", :controller => 'admin/roles', :action => 'list' %></li>
   </ul>
 
   <%= render :partial => "form" %>
