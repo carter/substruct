@@ -12,7 +12,7 @@ module SubstructApplicationController
           redirect_to "/#{session[:locale] || I18n.locale.to_s}#{request.request_uri}"
         else
           I18n.locale = params[:locale].to_sym
-          session[:locale] ||= params[:locale]
+          session[:locale] = params[:locale]
         end
       end
     end

@@ -1,6 +1,7 @@
 # ContentNode is the base class for all of our content.
 #
 class ContentNode < ActiveRecord::Base
+  has_translations_for :title, :content
   belongs_to :content_node_type
   has_and_belongs_to_many :sections
   

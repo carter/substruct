@@ -5,6 +5,7 @@
 # systems.
 #
 class Tag < ActiveRecord::Base
+  has_translations_for :name
   has_and_belongs_to_many :products,
     :join_table => 'products_tags'
   validates_presence_of :name
