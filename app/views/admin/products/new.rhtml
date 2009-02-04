@@ -2,7 +2,7 @@
 <div id="left">
   <h1><%= @title %></h1>
   <ul class="navigation secondary">
-    <li><a href="/admin/products/list/">Back to Product List</a></li>
+    <li><%= link_to 'Back to Product List', :controller => 'admin/products', :action => 'list' %></li>
   </ul>
 
     <%= render :partial => 'form' %>

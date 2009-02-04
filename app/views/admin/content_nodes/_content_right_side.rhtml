@@ -28,10 +28,10 @@
 
   <h1>Sections</h1>
 	<p>
-		<a href="/admin/sections/list" class="action">Manage Sections</a>
+		<%= link_to "Manage Sections", :controller => 'admin/sections', :action => 'list' %>
 	</p>
 	<p>
-		<a href="/admin/content_nodes/list_sections">View Content By Section...</a>
+		<%= link_to "View Content By Section...", :controller => 'admin/content_nodes', :action => 'list_sections' %>
 	</p>
 </div>
 <div class="clear">&nbsp;</div>

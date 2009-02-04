@@ -2,7 +2,7 @@
   <h1><%= @title %></h1>
 	<% if @aname != 'list' && @aname != 'index' %>
 		<ul class="navigation secondary">
-	    <li><a href="/admin/content_nodes/list_sections/">Back to Content Section List</a></li>
+			<li><%= link_to 'Back to Content Section List', :controller => "admin/content_nodes", :action => "list_sections" %></li>
 	  </ul>
 	<% else %>
 		<ul class="navigation secondary">

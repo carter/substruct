@@ -1,7 +1,7 @@
 <div id="left">
   <h1>Editing question</h1>
   <ul class="navigation secondary">
-    <li><a href="/admin/questions/list/">Back to Question List</a></li>
+		<li><%= link_to 'Back to Question List', :controller => 'admin/questions', :action => 'list' %></li>
   </ul>
 
   <%= form_tag :action => 'update', :id => @question %>
