@@ -1,6 +1,6 @@
 # Adds table necessary to link uploaded files with products.
 #
-class AddTagAndContentNodeTranslations < ActiveRecord::Migration
+class AddDefaultEnglishLanguage < ActiveRecord::Migration
   def self.up
     Language.create(:name => 'English', :iso_abbreviation => 'en')
   end
