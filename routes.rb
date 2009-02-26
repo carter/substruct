@@ -1,5 +1,6 @@
 # default
-i18n = Preference.find_by_name('internationalization').is_true? ? ':locale' : ''
+pref = Preference.find_by_name('internationalization')
+i18n = pref && pref.is_true? ? ':locale' : ''
 
 if i18n == ':locale'
   connect "/",
