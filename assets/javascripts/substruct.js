@@ -179,7 +179,7 @@ function highlightItem(item_id) {
 }
 
 // language select box
-addEvent(window, 'load', function() {
+Event.observe(window, 'load', function() {
 	if ($('language_select')) {
 		$('language_select').observe('change', function() {
 			match = /(.{4,5})\:\/\/(.*)\/(.{2})\/(.*)$/g.exec(location); // get the part of the url after the lang
