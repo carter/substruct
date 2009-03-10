@@ -143,7 +143,7 @@ class Product < Item
 	def is_new?
 	  @cached_is_new ||=
 	    begin
-	      self.date_available >= 2.weeks.ago
+	      self.date_available.to_time >= 2.weeks.ago
       end
   end
   
