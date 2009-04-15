@@ -131,7 +131,8 @@ module OrderHelper
     # Find the objects in the db to update
 		@order_user = @order.order_user
 		@order_account = @order.account
-		@billing_address = @order.billing_address
+		@billing_address = @order.billing_address 
+		@shipping_address = @order.shipping_address
 		# Comes in as a string, so we force it into a boolean.
 		@use_separate_shipping_address = (params[:use_separate_shipping_address] == 'true')
 		# Update all objects
@@ -143,7 +144,6 @@ module OrderHelper
 		if (@use_separate_shipping_address)
 		  # Create a new record for shipping address if it's the same
 		  # as the billing address...or if it doesn't exist.
-			@shipping_address = @order.shipping_address
 		  if @billing_address == @shipping_address || @shipping_address.nil?
 		    @shipping_address = @order_user.order_addresses.create(params[:shipping_address])
 		    @order.shipping_address_id = @shipping_address.id
@@ -152,8 +152,10 @@ module OrderHelper
 		    @shipping_address.update_attributes!(params[:shipping_address])
       end
 		else
-			@shipping_address = OrderAddress.new
+		  @shipping_address = @billing_address
+			@order.shipping_address_id = @order.billing_address_id
 		end
+		@order.save!
   end
 
 end
