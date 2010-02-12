@@ -1,6 +1,8 @@
 #  Copyright (c) 2006 Subimage Interactive - http://www.subimage.com
 require_dependency 'substruct/login_system.rb'
 
+require 'patch_attachment_fu'
+
 module Substruct
   # Should we use live rate calculation via FedEx?
   mattr_accessor :use_live_rate_calculation
@@ -220,6 +222,10 @@ LOOKING INTO OTHER OPTIONS!!!
     rc = RedCloth.new(content).to_html
     cut_content = truncate_words(rc, length)
     new_content = sanitize_html(cut_content)
+  end
+  
+  def get_affiliate_link(affiliate)
+    "http://#{request.env['SERVER_NAME']}?affiliate=#{affiliate.code}"
   end
 
 end
